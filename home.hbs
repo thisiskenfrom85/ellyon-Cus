@@ -1,0 +1,77 @@
+{{!< default}}
+
+<header class="mainHeader block">
+	<section class="leftBlock mainCover" {{#if @blog.cover}}style="background-image: url('{{@blog.cover}}');"{{/if}} >
+		<div class="filter"></div>
+		<span id="menuOpen" class="desktopHidden menuBtn"><i class="fa fa-bars fa-2x"></i></span>
+		{{#if @blog.logo}}
+		 	<a class="blogLogo" href="{{@blog.url}}" ><img src="{{@blog.logo}}" alt="{{@blog.title}}" /></a>
+		{{else}}
+		 	<h1>{{@blog.title}}</h1>
+		{{/if}}
+		<div class="mainInfo">
+			<h2 class="tagline">{{@blog.description}}</h2>
+			<div class="line"></div>
+			{{> "address"}}
+			<div class="desktopHidden">
+				{{> "social"}}
+			</div>
+		</div>
+	</section>
+	<section id="mobileMenu" class="rightBlock menuBlock " style="background-image: url('/assets/rightbkg.jpg');">
+		<div class="whitefilter"></div>
+		<span id="menuClose" class="desktopHidden menuBtn"><i class="fa fa-times fa-2x"></i></span>
+		<div class="menu">
+			{{navigation}}
+			<div class="desktopSocial mobileHidden">
+				{{> "social"}}
+			</div>
+		</div>
+	</section>
+</header>
+
+<main>
+	<section class="mainIframe">
+		{{! photo slide}}
+		<iframe src="{{@blog.url}}/photo" class="iframes" seamless scrolling="no"></iframe>
+	</section>
+	<section class="mainIframe">
+		{{! feature brand * Specific to EP}}
+		<iframe src="{{@blog.url}}/features" class="iframes" seamless scrolling="no"></iframe>
+	</section>
+	<section class="mainIframe">
+		{{! brand thumbnail, to be taken out in actual theme}}
+		<iframe src="{{@blog.url}}/friends" class="iframes" seamless scrolling="no"></iframe>
+
+	</section>
+	<section class="mainIframe">
+		{{! brand thumbnail, to be taken out in actual theme}}
+		<iframe src="{{@blog.url}}/thumbnail" class="iframes" seamless scrolling="no"></iframe>
+
+	</section>
+	<div class="morePost">
+		<div class="morePostWrapper">
+			<h3 class="tagline">More brands available. Online store coming soon!</h3>
+			{{> "cta"}}
+		</div>
+	</div>
+	{{!-- Not needed until store is life. 
+	<section class="mainIframe">
+				{{! Latest Post (Or prodcut list) CTA}}
+				<iframe src="{{@blog.url}}/sale" class="iframes" seamless scrolling="no"></iframe>
+			</section>
+			<section class="loopPosts">
+				{{! Page specific CTA}}
+				{{> "loop"}}
+				<div class="morePost">
+					<div class="morePostWrapper">
+						<h3 class="tagline">Check out all our products!</h3>
+						<a href="" class="storeBtn">Visit Store</a>
+					</div>
+				</div>
+	--}}
+		
+			</section>
+	
+</main>
+{{> "footer"}}

@@ -1,0 +1,472 @@
+/*--------------------------------------------------------------
+  theme develop based on Ghost's original casper
+  --------------------------------------------------------------*/
+
+/* Import the basics */
+
+//@import url(http://fonts.googleapis.com/css?family=Poppins:300,600);
+//@import url(http://fonts.googleapis.com/css?family=Lato:300,400);
+@import url(http://fonts.googleapis.com/css?family=Raleway:300,500);
+@import "fa-scss/fontello";
+@import "_include-media", "_variable","_normalize", "_general", "_utilities";
+
+/* Import the layouts */
+@import "_layout";
+
+/*--------------------------------------------------------------
+  Table of content
+
+  Note: media queries are per each element.
+  --------------------------------------------------------------*/
+/*
+		1. Homepage
+		2. Navigation
+		3. Single post
+		4. Footer
+		5. Photo Gallery & Thumbnail
+		6. Post Loop
+		7. About page
+		8. Contact page
+*/
+
+/*--------------------------------------------------------------
+	1. homepage
+  --------------------------------------------------------------*/
+.mainHeader {
+	height: 100vh;
+	text-shadow: $textshadow;
+	.pageTitle {
+		opacity: 0.9;
+  		font-size: 9rem;
+  		line-height: 7rem;
+  		direction: rtl;
+  		margin: 0;
+  		position: absolute;
+  		bottom: 0;
+  		right: 0;
+  		text-transform: uppercase;
+  		.fa {
+  			position: absolute;
+		    left: 0;
+		    animation: updown 3s ease infinite;
+  		}
+  	}
+	.mainCover {
+		//background-position: 20% 100%;
+		background-size: 160%;
+		box-shadow: 2px 0 20px 2px rgba($black, 0.2);
+		z-index: 2;
+
+	}
+	.blogLogo {
+		position: absolute;
+		top: 0;
+		left: 0;
+		margin: 2em;
+		z-index: 3;
+		img {
+			width: $logosize;
+		}
+	}
+	.mainInfo {
+		padding: 8em;
+		opacity: 0;
+		.tagline {
+			//width: 85%;
+			font-weight: 700;
+			line-height: 1.3em;
+			text-transform: uppercase;
+		}
+		h4.tagline {
+			font-weight: 300;
+			text-transform: none;
+		}
+		h4 {
+			margin: 0;
+			font-weight: $lighttext;
+		}
+		.line {
+			width: 60%;
+		    border-bottom: 2px solid rgba($white, 0.8);
+		    display: block;
+		    margin-top: 35px;
+		    margin-bottom: 35px;
+		    box-shadow: 0px 3px 2px -3px rgba(0,0,0,0.5);
+		}
+	}
+	.menuBlock {
+		background-size: cover;
+		background-position: center;
+	}
+	@include media('>=phone', '<=desktop', $handheld) {
+		display: block;
+		.mainCover {
+			background-position: 35% 100%;
+			background-size: cover;
+		}
+		.pageTitle {
+			opacity: 0.85;
+			font-size: 7rem;
+			line-height: 5rem;
+			direction: rtl;
+			margin: 0;
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			.fa {
+				position: absolute;
+				left: 0;
+				top: -5rem;
+				animation: none;
+			}
+		}
+		.mainInfo {
+			opacity: 1;
+			padding: 7em 5em 5em 5em;
+			pointer-events: none;
+			.line {
+				border-bottom: 1px solid rgba($white, 0.8);
+			}
+		}
+		.blogLogo {
+			img {
+				width: $mobilelogosize;
+			}
+		}
+		.menuBlock {
+			position: absolute;
+			top: 0;
+			right: -100%;
+			z-index: 999;
+			width: 80%;
+			.whitefilter {
+				background: $black;
+				opacity: 1;
+			}
+		}
+		.menuHide {
+			//right: -100%;
+			transform: translate3d(0,0,0);
+			transition: all 0.3s ease;
+		}
+		.menuActivated {
+			//right:0;
+			transform: translate3d(-125%,0,0);
+			transition: all 0.3s ease;
+		}
+    }
+}
+/*--------------------------------------------------------------
+	2. Navigation
+  --------------------------------------------------------------*/
+.menu {
+	margin: $desktopTextToCenter*3;
+	opacity:0;
+	.nav ul {
+		padding-left: 1em;
+	}
+	a {
+		color: white;
+		&:hover {
+			color: fade_out($logocolor, 0.1);
+		}
+	}
+	li {
+		 list-style-type: none;
+		 font-size: 1.8rem;
+		 font-weight: 500;
+		 text-transform: uppercase;
+		 margin-bottom: 1em;
+		 text-indent: -1em;
+
+	}
+	.nav-current a {
+		color: $logocolor;
+	}
+	@include media('>=phone', '<=desktop', $handheld) {
+		margin: $mobileTextToCenter*3;
+		opacity: 1;
+		li {
+			margin-bottom: 1.5em;
+		}
+	}
+}
+.menuBtn {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	color: white;
+}
+
+
+/*--------------------------------------------------------------
+	3. footer
+  --------------------------------------------------------------*/
+.footer {
+	padding: .5em;
+	text-align: right;
+}
+
+.mainFooter {
+	width: 50%;
+	background: $footerbackground;
+	position: relative;
+	.footerWrapper {
+		padding: 2em 3em;
+	}
+	.blogLogo {
+		display: block;
+	margin-bottom: 1em;
+	text-align: right;
+	img {
+		width: $logosize;
+	}
+	}
+	.address a {
+		display: block;
+		text-align: right;
+		color: $footertext;
+	}
+	.copyRight {
+		margin-top: 1.5em;
+		text-align: right;
+		color: $footertext;
+	}
+	@include media('>=phone', '<=desktop', $handheld) {
+		width: 100%;
+		.footerWrapper {
+			padding: 1.5em;
+		}
+		.blogLogo {
+			img {
+				width: $mobilelogosize;
+			}
+		}
+	}
+}
+
+/*--------------------------------------------------------------
+	4. Photo Gallery & Thumbnail
+  --------------------------------------------------------------*/
+
+#photoBlock {
+	.leftInfoBlock {
+		@include media('>=phone', '<=desktop', $handheld) {
+			box-shadow: inset 0 -20px 0 0px black;
+		}
+	}
+}
+#brandBlock {
+	@include media('>=phone', '<=desktop', $handheld) {
+    	background: $bodybackground;
+    }
+}
+#productBlock {
+	@extend #brandBlock;
+	.block .imgBlock {
+		overflow: visible;
+	}
+}
+//text render on row flex blocs
+.blockTitle {
+	font-weight: 500;
+	font-size: 3.2rem;
+	letter-spacing: -1px;
+    margin: $desktopTextToCenter;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    width: 80%;
+    @include media('>=phone', '<=desktop', $handheld) {
+    	margin: $mobileTextToCenter*2 $mobileTextToCenter 0 ;
+    	width: calc(100% - #{$mobileTextToCenter}*2);
+    }
+}
+.aboutDesc {
+	margin: $desktopTextToCenter;
+    width: 80%;
+    @include media('>=phone', '<=desktop', $handheld) {
+    	margin: $mobileTextToCenter*2 $mobileTextToCenter 0 ;
+    	width: calc(100% - #{$mobileTextToCenter}*2);
+	}
+}
+.hasthumb{
+	img {
+		width: 100px !important;
+	}
+}
+
+.brandCTA {
+	padding: $desktopTextToCenter;
+	position: absolute;
+	bottom: 0;
+	p {
+		font-weight: $lighttext;
+		font-size: 2rem;
+		margin: 0 0 0.75em 0;
+	}
+	@include media('>=phone', '<=desktop', $handheld) {
+    	position: relative;
+    	text-align: right;
+    	padding: $mobileTextToCenter;
+    	p{ 
+    		margin-right: 0.5em;
+    		display: inline;
+    		font-size: 1.6rem;
+    		font-weight: $heavytext;
+    	}
+    }
+}
+.contacts {
+	display: block;
+	color: white;
+	margin-bottom: 0.75em;
+	font-weight: $heavytext;
+	&:hover {
+		color: white;
+		i {color: $logocolor;}
+	}
+	i,span {
+		margin-right: 0.4em;
+	}
+	@include media('>=phone', '<=desktop', $handheld) {
+		display: inline-block;
+		margin: 0.5em;	
+		i, span {
+			margin: 0;
+			color: $logocolor;
+		}
+	}
+}
+.contactUs {
+	@extend .normalBtn;
+	@extend .contacts;
+	border-color: $white;
+	text-align: center;
+	&:hover {
+		border-color: $logocolor;
+	}
+}
+
+
+.storeBtn {
+	@extend .highlightBtn;
+	margin: $desktopTextToCenter;
+	position: absolute;
+	bottom: 0;
+	display: table;
+}
+/*--------------------------------------------------------------
+	5. Post Loop
+  --------------------------------------------------------------*/
+  .loopPosts {
+  	@include media('>=phone', '<=desktop', $handheld) {
+  		margin-top: $mobileTextToCenter*2;
+  		background: $bodybackground;
+  	}
+  }
+  .loopImage {
+  	display: block;
+  	width: 100%;
+  	height: 33vh;
+  	background-size: cover;
+  	background-position: center;
+  	@include media('>=phone', '<=desktop', $handheld) {
+  		width: calc(100% - #{$mobileTextToCenter}*2);
+  		margin-left: $mobileTextToCenter*2;
+  		height: 20vh;
+  	}
+  }
+  .loopDesc {
+  	margin: $desktopTextToCenter;
+  	a {
+  		color: white;
+  		&:hover {
+  			color: $logocolor;
+  		}
+  	}
+  	@include media('>=phone', '<=desktop', $handheld) {
+  		width: calc(100% - #{$mobileTextToCenter});
+  		margin: $mobileTextToCenter/2 $mobileTextToCenter $mobileTextToCenter/2 $mobileTextToCenter*2;
+  		margin-top: -25px;
+    	z-index: 2;
+  		h2 {
+  			text-align: right;
+  			text-shadow: $textshadow;
+  		}
+  	}
+  }
+  .morePost {
+  	margin-left: 50%;
+	width: 50%;
+	background: $footerbackground;
+	.morePostWrapper {
+		padding: 3em 2em;
+		position: relative;
+		.tagline {
+			color: $footertext;
+			font-weight: $lighttext;
+			font-size: 3rem;
+			margin-bottom: 2em;
+			text-transform: uppercase;
+		}
+		.storeBtn {
+			margin: 0;
+			display: inline-block;
+			position: relative;
+		}
+		.contacts {
+			color: $footertext;
+			display: inline-block;
+			margin-right:  1em;
+		}
+		.contactUs {
+			color: $footertext;
+			border-color: $footertext;
+			display: inline-block;
+			&:hover {
+				border-color: $logocolor;
+			}
+			@include media('>=phone', '<=desktop', $handheld) {
+				border-color: $logocolor;
+			}
+		}
+	}
+	@include media('>=phone', '<=desktop', $handheld){
+		width: calc(100% - #{$mobileTextToCenter}*2);
+		margin: $mobileTextToCenter*2 0 $mobileTextToCenter*2 $mobileTextToCenter*2;
+		.morePostWrapper {
+			padding: 1.5em;
+			.tagline {
+				font-size: 3.2rem;
+				margin-bottom: 0.5em;
+			}
+		}
+	}
+}
+/*--------------------------------------------------------------
+	6. About Page & Service Page
+  --------------------------------------------------------------*/
+
+
+  /*--------------------------------------------------------------
+	7. Contact Page
+  --------------------------------------------------------------*/
+.mainHeader .typeformWrap {
+	flex: 1;
+	height: 100vh;
+	//margin-top: -28px;
+	background: $white;
+}
+
+
+#contactPage {
+	@include media('>=phone', '<=desktop', $handheld) {
+		margin-top: 0;
+		.typeformWrap {
+			width: 100%;
+			margin: 0 0 $mobileTextToCenter*2;
+			height: 50vh;
+		}
+	}
+}
+

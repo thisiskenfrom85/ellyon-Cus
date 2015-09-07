@@ -1,0 +1,193 @@
+/* ==========================================================================
+   Utilities 
+   ========================================================================== */
+
+/* Clears shit */
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
+/* Hides shit */
+.hidden {
+    text-indent: -9999px;
+    visibility: hidden;
+    display: none;
+}
+
+/* Creates a responsive wrapper that makes our content scale nicely */
+.inner {
+    position: relative;
+    width: 80%;
+    max-width: 710px;
+    margin: 0 auto;
+}
+
+/* Centres vertically yo. (IE8+) */
+.vertical {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/* Wraps the main content & footer */
+.bodyWrapper {
+    position: relative;
+    z-index: 10;
+    min-height: 100%;
+    background: $bodybackground;
+    -webkit-transition: -webkit-transform 0.5s ease;
+            transition: transform 0.5s ease;
+
+}
+//filter darkens photo 
+.filter {
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, #4d4d4d 0%, #000000 100%);
+    opacity: 0.7;
+}
+.darkfilter {
+    @extend .filter;
+    opacity: 0.85;
+}
+.whitefilter {
+    @extend .filter;
+    //background-color: rgba(#8B8B8B, 0.9);
+    background: radial-gradient(ellipse at center,$white 0,#696969 100%);
+    //background: radial-gradient(ellipse at center, #8C7961 0%, #696969 100%);
+    opacity: 0.9;
+&:before {
+        opacity: .5;
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 0 100vh 80vh;
+        border-color: transparent transparent rgba($black,.05);
+        z-index: 0;
+        pointer-events: none;
+        }
+        &:after {
+            opacity: .5;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 100vh 0 0 150vh;
+            border-color: transparent transparent transparent rgba($black,.05);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+    
+}
+body.nav-opened .site-wrapper {
+    overflow-x: hidden;
+    -webkit-transform: translate3D(-240px, 0, 0);
+        -ms-transform: translate3D(-240px, 0, 0);
+            transform: translate3D(-240px, 0, 0);
+    -webkit-transition: -webkit-transform 0.3s ease;
+            transition: transform 0.3s ease;
+}
+
+
+//social media fontawesome icons
+.social a {
+    color: $white;
+    display: inline-block;
+    margin-right: 0.75em;
+    .fa {
+        font-size: 2.4rem;
+    }
+    &:hover, &:active {
+        color: $logocolor;
+    }
+    @include media('>=phone', '<=desktop', $handheld) {
+        margin-right: 1.5em;
+        .fa {
+            font-size:3rem;
+        }
+    }
+}
+
+//address formating
+.address {
+    a {
+        display: table;
+        color: $white;
+        .fa, .icon {
+            margin-right: 0.2em;
+        }
+        .city {
+            padding-left: 1.5em;
+        }
+        &:hover, &:active {
+            .fa, .icon {
+                color: $logocolor;
+            }
+        }
+    }
+    @include media('>=phone', '<=desktop', $handheld)  {
+        margin-bottom: $mobileTextToCenter;
+    }
+}
+//hours formatting
+.opsHour {
+    p {
+        margin: 0;
+    }
+}
+//basic button style
+.normalBtn {
+    border: 3px solid transparent;
+    border-radius: 30px;
+    padding: 8px 20px;
+    text-align: center;
+    font-weight: $heavytext;
+    color: $white;
+}
+.highlightBtn {
+    @extend .normalBtn;
+    border-color: $white;
+    background-color: $logocolor;
+    box-shadow: 0 0 0px 3px $logocolor;
+    transition: all 0.3s ease;
+    &:hover {
+        color: $logocolor;
+        border-color: $logocolor;
+        background-color: transparent;
+        box-shadow: 0 0 0px 3px transparent;
+    }
+
+}
+//deals with embedded iframe that are pretending to be part of page
+iframe[seamless]{
+    background-color: transparent;
+    border: 0px none transparent;
+    padding: 0px;
+    margin: 0;
+    overflow: hidden;
+    width: 100%;
+}
+
+//keyframe 
+@keyframes updown{
+    0% {top: -8rem; opacity: 0.8;}
+    50% {top: -7rem; opacity: 1}
+    100% {top: -8rem; opacity: 0.8}
+}

@@ -1,0 +1,43 @@
+{{!< default}}
+
+{{! This is a page template. A page outputs content just like any other post, and has all the same
+    attributes by default, but you can also customise it to behave differently if you prefer. }}
+
+{{! Everything inside the #post tags pulls data from the page }}
+{{#post}}
+
+
+<main role="main" id="brandBlock">
+    <article class="{{post_class}} imgOnLeft" >
+        <header class="titleBlock" >
+            <h1 class="blockTitle">{{title}}</h1>
+            {{!--Not needed for now
+            <section class="brandCTA mobileHidden">
+                                        <p>More brands available. Online store coming soon!</p>
+                                        {{> "cta"}}
+                                    </section>
+                                    --}}
+        </header>
+        <section class="contentBlock" data-iframe-height>
+            {{content}}
+            {{!--
+            <div class="brandCTA desktopHidden">
+                                        <p>More brands available.</p>
+                                        <a class="contacts" href="16501234567">
+                                            <span class="fa-stack fa-lg fa-2x">
+                                                <i class="fa fa-circle-thin fa-stack-2x"></i>
+                                                <i class="fa fa-phone fa-stack-1x"></i>
+                                            </span></a>
+                                        <a class="contacts" href="{{@blof.url}}/contact">
+                                            <span class="fa-stack fa-lg fa-2x">
+                                                <i class="fa fa-circle-thin fa-stack-2x"></i>
+                                                <i class="fa fa-envelope fa-stack-1x"></i>
+                                            </span></a>
+                                    </div>
+                                    --}}
+        </section>
+    </article>
+</main>
+
+{{/post}}
+<script type="text/javascript" src="{{asset "js/libs/iframeResizer.contentWindow.min.js"}}"></script>

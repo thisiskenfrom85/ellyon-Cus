@@ -1,0 +1,177 @@
+//take out unwanted margin in image wrapped by p
+.contentBlock {
+	    p {
+		width: 100%;
+		margin:0;
+		img {
+			width: 100%;
+		}
+	}
+}
+
+.isaBlock {
+	display: flex;
+	position: relative;
+	.contentBlock {
+		flex: 1;
+		position: relative;
+		margin-bottom: -7px;
+		.hasContent {
+			position: absolute;
+			top: 30%;
+			width: 70%
+		}
+	}
+	.titleBlock {
+		flex: 1;
+		position: relative;
+		background: radial-gradient(ellipse at center, #202020 0%, #000000 100%);
+		&:before {
+		opacity: .5;
+		content: '';
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 0 0 100vh 80vh;
+		border-color: transparent transparent rgba(255,255,255,.05);
+		z-index: 0;
+		pointer-events: none;
+		}
+		&:after {
+			opacity: .5;
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 100vh 0 0 150vh;
+			border-color: transparent transparent transparent rgba(255,255,255,.05);
+			z-index: 0;
+			pointer-events: none;
+		}
+	}
+	@include media('>=phone', '<=desktop', $handheld) {
+		.contentBlock {
+			.hasContent {
+				position: relative;
+				top: 0;
+				width: auto;
+				margin-bottom: $mobileTextToCenter;
+				margin-top: -26px;
+				h1,h2,h3,h4 {
+					text-shadow: $textshadow;
+				}
+
+			}
+		}
+	}
+
+}
+//desktop left and right blocks
+.imgOnRight {
+	@extend	.isaBlock;
+	$direction: rtl;
+	flex-direction: row;
+	.contentBlock {
+		.hasContent {
+			direction: $direction;
+		    left: -75%;
+		    @include media('>=phone', '<=desktop', $handheld)  {
+		    	left: 0;
+		    	margin-right: $mobileTextToCenter;
+		    }
+		}
+	}
+	.titleBlock {
+		direction: $direction;
+	}
+	@include media('>=phone', '<=desktop', $handheld) {
+		flex-direction: column;
+	}
+}
+.imgOnLeft {
+	@extend .isaBlock;
+	$direction: ltr;
+	flex-direction: row-reverse;
+	.contentBlock {
+		.hasContent {
+			direction: $direction;
+		    right: -75%;
+		    @include media('>=phone', '<=desktop', $handheld)  {
+		    	right: 0;
+		    	margin-left: $mobileTextToCenter;
+		    }
+		}
+	}
+	.titleBlock {
+		direction: $direction;
+	}
+	@include media('>=phone', '<=desktop', $handheld) {
+		flex-direction: column;
+	}
+}
+
+
+
+
+
+
+.block {
+	display: flex;
+	flex-direction: row;
+	position: relative;
+	.leftBlock {
+		flex:1;
+		overflow: hidden;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		position: relative;
+		div {
+			&:not(.filter){
+			z-index: 1;
+			position: relative;
+			}
+		}
+	}
+	.rightBlock {
+		@extend .leftBlock;
+	}
+	@include media('>=phone', '<=desktop', $handheld) {
+		flex-direction: column;
+	}
+}
+
+
+
+//this is to control iframe appear in homepage
+.mainIframe {
+	overflow-x: hidden;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+	margin-bottom: -7px;
+	position: relative;
+
+}
+//hides shit
+.desktopHidden {
+    @include media('>=desktop', 'screen') {
+        display: none !important;
+    	visibility: hidden;
+    	text-indent: -9999px;
+    }
+}
+.mobileHidden {
+    @include media('>=phone','<=desktop', $handheld) {
+        display: none;
+        visibility: hidden;
+        text-indent: -9999px;
+    }
+}

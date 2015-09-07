@@ -1,0 +1,63 @@
+{{!< default}}
+{{#post}}
+<header class="mainHeader block">
+	<section class="leftBlock mainCover"
+		{{#if image}}
+			style="background-image: url('{{image}}'); background-position: 35% 100%;" 
+		{{else}}
+			style="background-image: url('{{@blog.cover}}');"
+		{{/if}}>
+		{{#if @blog.logo}}
+		 	<a class="blogLogo" href="{{@blog.url}}" ><img src="{{@blog.logo}}" alt="{{@blog.title}}" /></a>
+		{{else}}
+		 	<h1>{{@blog.title}}</h1>
+		{{/if}}
+		<div class="darkfilter"></div>
+		<span id="menuOpen" class="desktopHidden menuBtn"><i class="fa fa-bars fa-2x"></i></span>
+		<div class="mainInfo">
+			{{> "address"}}
+			<div class="line"></div>
+			<section class="opsHour">
+				<p>Office Hours:</p>
+				<p>Mon - Fri: 9am - 6pm</p>
+				<p>Sat: Appointment Only</p>
+				<p>Sun: Closed</p>
+			</section>
+			<div class="desktopHidden">
+				{{> "social"}}
+			</div>
+		</div>
+		<h1 class="pageTitle">Send Us a Message </h1>
+	</section>
+	<section id="mobileMenu" class="rightBlock menuBlock desktopHidden">
+		<div class="whitefilter"></div>
+		<span id="menuClose" class="menuBtn"><i class="fa fa-times fa-2x"></i></span>
+		<div class="menu">
+			{{navigation}}
+			<div class="desktopSocial mobileHidden">
+				{{> "social"}}
+			</div>
+		</div>
+	</section>
+	<section class="rightBlock typeformWrap mobileHidden">
+			<!-- Change the width and height values to suit you best -->
+			<div class="typeform-widget" data-url="https://gary69.typeform.com/to/rW8kgO" data-text="Send Us a Message" style="width:100%;height:93%;"></div>
+			<script>(function(){var qs,js,q,s,d=document,gi=d.getElementById,ce=d.createElement,gt=d.getElementsByTagName,id='typef_orm',b='https://s3-eu-west-1.amazonaws.com/share.typeform.com/';if(!gi.call(d,id)){js=ce.call(d,'script');js.id=id;js.src=b+'widget.js';q=gt.call(d,'script')[0];q.parentNode.insertBefore(js,q)}})()</script>
+
+		</section>
+</header>
+
+<main class="{{post_class}}" id="contactPage">
+	<section class="typeformWrap desktopHidden">
+		<!-- Change the width and height values to suit you best -->
+		<div class="typeform-widget" data-url="https://gary69.typeform.com/to/rW8kgO" data-text="Send Us a Message" style="width:100%;height:100%;"></div>
+		<script>(function(){var qs,js,q,s,d=document,gi=d.getElementById,ce=d.createElement,gt=d.getElementsByTagName,id='typef_orm',b='https://s3-eu-west-1.amazonaws.com/share.typeform.com/';if(!gi.call(d,id)){js=ce.call(d,'script');js.id=id;js.src=b+'widget.js';q=gt.call(d,'script')[0];q.parentNode.insertBefore(js,q)}})()</script>
+		    <div style="font-family: Sans-Serif;font-size: 12px;color: #999;opacity: 0.5; padding-top: 5px;">Powered by <a href="http://www.typeform.com/?utm_campaign=typeform_rW8kgO&amp;utm_source=website&amp;utm_medium=typeform&amp;utm_content=typeform-embedded&amp;utm_term=English" style="color: #999" target="_blank">Typeform</a></div>
+
+
+
+
+	</section>
+</main>
+{{/post}}
+{{!> "footer"}}
