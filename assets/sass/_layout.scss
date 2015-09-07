@@ -154,8 +154,10 @@
 //this is to control iframe appear in homepage
 .mainIframe {
 	overflow-x: hidden;
-	overflow-y: scroll;
-	-webkit-overflow-scrolling: touch;
+	@include media('>=phone', '<=desktop', $handheld) {
+		overflow-y: scroll;
+		-webkit-overflow-scrolling: touch;
+	}
 	margin-bottom: -7px;
 	position: relative;
 
