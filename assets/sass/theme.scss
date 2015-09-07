@@ -6,7 +6,8 @@
 
 //@import url(http://fonts.googleapis.com/css?family=Poppins:300,600);
 //@import url(http://fonts.googleapis.com/css?family=Lato:300,400);
-@import url(http://fonts.googleapis.com/css?family=Raleway:300,500);
+//@import url(http://fonts.googleapis.com/css?family=Raleway:300,500);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,700,900,100);
 @import "fa-scss/fontello";
 @import "_include-media", "_variable","_normalize", "_general", "_utilities";
 
@@ -73,12 +74,12 @@
 		opacity: 0;
 		.tagline {
 			//width: 85%;
-			font-weight: 700;
+			//font-weight: $superheavytext;
 			line-height: 1.3em;
 			text-transform: uppercase;
 		}
 		h4.tagline {
-			font-weight: 300;
+			font-weight: $mediumtext;
 			text-transform: none;
 		}
 		h4 {
@@ -174,7 +175,7 @@
 	li {
 		 list-style-type: none;
 		 font-size: 1.8rem;
-		 font-weight: 500;
+		 font-weight: $mediumtext;
 		 text-transform: uppercase;
 		 margin-bottom: 1em;
 		 text-indent: -1em;
@@ -269,7 +270,7 @@
 }
 //text render on row flex blocs
 .blockTitle {
-	font-weight: 500;
+	font-weight: $mediumtext;
 	font-size: 3.2rem;
 	letter-spacing: -1px;
     margin: $desktopTextToCenter;
@@ -308,7 +309,7 @@
     	position: relative;
     	text-align: right;
     	padding: $mobileTextToCenter;
-    	p{ 
+    	p{
     		margin-right: 0.5em;
     		display: inline;
     		font-size: 1.6rem;
@@ -330,7 +331,7 @@
 	}
 	@include media('>=phone', '<=desktop', $handheld) {
 		display: inline-block;
-		margin: 0.5em;	
+		margin: 0.5em;
 		i, span {
 			margin: 0;
 			color: $logocolor;
@@ -469,4 +470,3 @@
 		}
 	}
 }
-
